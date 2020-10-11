@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <title>Pengiriman Barang</title>
+    <style>
+
+    </style>
+    <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //Untuk mengkalikan harga dengan berat
+            $("#mberat2").keyup(function () {
+                var berat3 = parseInt($("#mberat2").val());
+                var harga3 = berat3 * 10000;
+                $("#mharga2").val(harga3);
+            });
+
+            //Untuk patokan diskon
+            $("#mberat2").keyup(function () {
+                var berat2 = parseInt($("#mberat2").val());
+                var harga2 = parseInt($("#mharga2").val())
+                var diskon2
+                if (berat2 > 0, berat2 < 10) {
+                    diskon2 = 0
+                } else if (berat2 >= 10, berat2 < 40) {
+                    diskon2 = 10
+                } else if (berat2 >= 40, berat2 < 70) {
+                    diskon2 = 30
+                } else if (berat2 >= 70, berat2 < 100) {
+                    diskon2 = 50
+                } else {
+                    diskon2 = 70
+                };
+                $("#mdiskon2").val(diskon2);
+            });
+
+            //Untuk menghitung total harga
+            $("#mberat2").keyup(function () {
+                var hargaa = parseInt($("#mharga2").val());
+                var diskonn = parseInt($("#mdiskon2").val());
+                var totall = hargaa - (hargaa * (diskonn / 100));
+                $("#mtotal2").val(totall);
+            });
+
+            //Untuk menghitung kembalian
+            $("#mdibayar2").keyup(function () {
+                var dibayar4 = parseInt($("#mdibayar2").val());
+                var total4 = parseInt($("#mtotal2").val());
+                var kembalian4 = dibayar4 - total4;
+                $("#mkembalian2").val(kembalian4);
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <!--Navbar-->
+    <nav class="navbar mb-5 shadow"
+        style="background-color:red; color: white; font-family: comic sans MS;">
+        <img src="kurir.jpg" style="width: 150px; margin-left:45%;" alt="Gambar">
+    </nav>
+
+    <!--Card Laundry-->
+    <div class="container card bg-transparant mb-3 shadow" style="width: 675px; margin-top: 30px; float: center;">
+        <div class="card-header text-white" style="text-align: center; background-color: red; font-family: comic sans MS;">
+            <h3>Jasa Pengiriman Paket</h3>
+        </div>
+        <div class="card-body">
+            <center><strong>Tarif Rp. 10000/kg</strong></center>
+            <hr>
+            <center><strong>Menerima Antar Jemput Paket:</strong></center>
+            <div class="card-group shadow-sm">
+                <div class="card rounded" style="margin-right: 30px; margin-top: 20px; width: 30%; height: 200;">
+                    <img src="elektronik.jpg" height="150px" class="card-img-top" alt="Gambar">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: center;">Elektronik</h5>
+                    </div>
+                </div>
+                <div class="card rounded" style="margin-top: 20px; width: 30%; height: 200;">
+                    <img src="fashion.jpg" height="150px" class="card-img-top" alt="Gambar">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: center;">Fashion</h5>
+                    </div>
+                </div>
+                <div class="card rounded" style="margin-left: 30px; margin-top: 20px; width: 30%; height: 200;">
+                    <img src="otomotif.jpg" height="150px" class="card-img-top" alt="Gambar">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: center;">Otomotif</h5>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--Form-->
+    <div class="card bg-transparant mb-3 shadow" style="width: 675px; margin-left: 28%; float: center;">
+        <div class="card-header text-white" style="text-align: center; background-color: red; font-family: comic sans MS;">
+            <h3>Masukan Data Barang Yang Ingin Diantar</h3>
+        </div>
+        <div class="card-body">
+            <div class="form-group row ">
+                <label for="pembelii" class="col-sm-2 col-form-label">Customer</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="pembeli" placeholder="Masukkan Nama"
+                        style="width: 350px;">
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label for="tanggall" class="col-sm-2 col-form-label">Tanggal</label>
+                <div class="col-sm-4">
+                    <input type="date" class="form-control" id="tanggal" style="width: 350px;">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="type" class="col-sm-2 col-form-label">Type Barang</label>
+                <div class="col-sm-4">
+                    <select class="form-control" id="type" name="type" style="width: 350px;">
+                        <option selected>Pilih Barang</option>
+                        <option value="barang elektronik">Elektronik</option>
+                        <option value="Pakaian ">Fashion</option>
+                        <option value="acessoris Motor">Otomotif</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label for="berat" class="col-sm-2 col-form-label">Berat (kg)</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" id="berat" placeholder="Masukkan Berat"
+                        style="width: 350px;">
+                </div>
+            </div>
+            <button type="button" class="btn text-white"
+                style="margin-left: 355px; margin-top: 20px; background-color: navy;"
+                onclick="add()">Tambahkan</button>
+        </div>
+    </div>
+    <!--Table-->
+    <h3 style="font-family: comic sans MS; text-align: center; margin: 30px;">Tabel Pemesan</h3>
+    <table class="table table-sm rounded shadow rounded"
+        style="width: 1000px;  margin-left : 20%; text-align: center; float:center;">
+        <thead>
+            <tr style="background-color: red; color: navy;">
+                <th scope="col">No</th>
+                <th scope="col">Pembeli</th>
+                <th scope="col">Tanggal</th>
+                <th scope="col">Type Barang</th>
+                <th scope="col">Berat (kg)</th>
+                <th scope="col">Modify</th>
+            </tr>
+        </thead>
+        <tbody id="tampildata">
+
+        </tbody>
+    </table>
+
+    <!--Tabel Pembayaran-->
+    <h3 style="font-family: comic sans MS; text-align: center; margin-top: 30px;">Tabel Detail Pembayaran</h3>
+    <table class="table table-sm rounded shadow rounded" style="width: 1380px; text-align: center; margin-left: 6%;">
+        <thead>
+            <tr style="background-color: red; color: navy;">
+                <th scope="col">No</th>
+                <th scope="col">Pembeli</th>
+                <th scope="col">Tanggal</th>
+                <th scope="col">Type Barang</th>
+                <th scope="col">Berat (kg)</th>
+                <th scope="col">Harga (Rp.)</th>
+                <th scope="col">Diskon (%)</th>
+                <th scope="col">Total</th>
+                <th scope="col">Dibayar</th>
+                <th scope="col">Kembalian</th>
+                <th scope="col">Modify</th>
+            </tr>
+        </thead>
+        <tbody id="tampildata2">
+
+        </tbody>
+    </table>
+
+    <!--Form Edit-->
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-white" style="background-color: red;">
+                    <h4 class="modal-title" id="exampleModalLabel">Masukkan data baru</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body rounded">
+                    <div class="form-group row ">
+                        <label for="mpembelii" class="col-sm-2 col-form-label">Pembeli</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="mpembeli" placeholder="Masukkan Nama"
+                                style="width: 350px;">
+                        </div>
+                    </div>
+                    <div class="form-group row ">
+                        <label for="mtanggall" class="col-sm-2 col-form-label">Tanggal</label>
+                        <div class="col-sm-4">
+                            <input type="date" class="form-control" id="mtanggal" style="width: 350px;">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="mtype" class="col-sm-2 col-form-label">Type Barang</label>
+                        <div class="col-sm-4">
+                            <select class="form-control" id="mtype" name="mtype" style="width: 350px;">
+                                <option selected>Pilih Barang</option>
+                                <option value="barang elektronik">Elektronik</option>
+                                <option value="Pakaian">Fashion</option>
+                                <option value="acessoris motor">Otomotif</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row ">
+                        <label for="mberatt" class="col-sm-2 col-form-label">Berat (kg)</label>
+                        <div class="col-sm-4">
+                            <input type="number" class="form-control" id="mberat" placeholder="Masukkan Berat"
+                                style="width: 350px;">
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light shadow-sm" data-dismiss="modal">Kembali</button>
+                        <button type="button" class="btn btn-primary shadow-sm" onclick="saveData()"
+                            data-dismiss="modal">Ubah</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!--Form Pembayaran-->
+    <div class="modal fade" id="modal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-white" style="background-color: red;">
+                    <h4 class="modal-title" id="exampleModalLabel">Form Pembayaran</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body rounded">
+                    <div class="form-group row ">
+                        <label for="mpembelii2" class="col-sm-2 col-form-label">Pembeli</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="mpembeli2" placeholder="Masukkan Nama"
+                                style="width: 350px;">
+                        </div>
+                    </div>
+                    <div class="form-group row ">
+                        <label for="mtanggall2" class="col-sm-2 col-form-label">Tanggal</label>
+                        <div class="col-sm-4">
+                            <input type="date" class="form-control" id="mtanggal2" style="width: 350px;">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="mtype2" class="col-sm-2 col-form-label">Type Barang</label>
+                        <div class="col-sm-4">
+                            <select class="form-control" id="mtype2" name="mtype2" style="width: 350px;">
+                                <option selected>Pilih Barang</option>
+                                <option value="barang elektronik">Elektronik</option>
+                                <option value="Pakaian">Fashion</option>
+                                <option value="acessoris motor">Otomotif</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row ">
+                        <label for="mberatt2" class="col-sm-2 col-form-label">Berat (kg)</label>
+                        <div class="col-sm-4">
+                            <input type="number" class="form-control" id="mberat2" placeholder="Masukkan Berat"
+                                style="width: 350px;">
+                        </div>
+                    </div>
+                    <form name="hitung diskon" method="POST">
+                        <div class="form-group row ">
+                            <label for="mhargaa2" class="col-sm-2 col-form-label">Harga (Rp.)</label>
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" id="mharga2" name="mharga2"
+                                    placeholder="Masukkan Harga" style="width: 350px;">
+                            </div>
+                        </div>
+                        <div class="form-group row ">
+                            <label for="mdiskonn2" class="col-sm-2 col-form-label">Diskon (%)</label>
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" id="mdiskon2" name="mdiskon2"
+                                    placeholder="Masukkan Diskon" style="width: 350px;">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-3">
+                            <label for="mtotall2" class="col-sm-2 col-form-label">Total</label>
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" id="mtotal2" name="mtotal2"
+                                    placeholder="Total" style="width: 350px;">
+                            </div>
+                        </div>
+                        <div class="form-group row mt-3">
+                            <label for="mdibayarr2" class="col-sm-2 col-form-label">Dibayar</label>
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" id="mdibayar2" name="mdibayar2"
+                                    placeholder="Masukkan Jumlah Uang" style="width: 350px;">
+                            </div>
+                        </div>
+                        <div class="form-group row mt-3">
+                            <label for="mkembaliann2" class="col-sm-2 col-form-label">Kembalian</label>
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control" id="mkembalian2" name="mkembalian2"
+                                    placeholder="Total Kembalian" style="width: 350px;">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light shadow-sm" data-dismiss="modal2">Kembali</button>
+                        <button type="button" class="btn btn-primary shadow-sm" onclick="add2()"
+                            data-dismiss="modal2">Bayar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <script>
+        //Data didalam tabel
+        var pembeli = []
+        var tanggal = []
+        var type = []
+        var berat = []
+
+
+        var tampil = document.getElementById('tampildata')
+
+        //Menampilkan data
+        function showData() {
+            tampil.innerHTML = ""
+
+            for (i = 0; i < pembeli.length; i++) {
+                var nodata = i + 1
+
+                tampil.innerHTML += "<tr>" +
+                    "<th>" + nodata + "</th>" +
+                    "<td>" + pembeli[i] + "</td>" +
+                    "<td>" + tanggal[i] + "</td>" +
+                    "<td>" + type[i] + "</td>" +
+                    "<td>" + berat[i] + "</td>" +
+
+                    "<td>" +
+                    "<button class='btn btn-transparent shadow-sm' href='#' onclick='hapus(" + i +
+                    ")' type='button'>Delete</button>" +
+                    "<button class='btn btn-tranparent shadow-sm' data-toggle='modal' data-target='#modal' onclick='update(" +
+                    i + ")' type='button'>Update</button>" +
+                    "<button class='btn btn-tranparent shadow-sm' data-toggle='modal' data-target='#modal2' type='button'>Bayar</button>" +
+                    "</td>" +
+                    "</tr>"
+            }
+        }
+        showData()
+
+        //Menambahkan data baru
+        function add() {
+            var pembelibaru = document.getElementById('pembeli').value
+            var tanggalbaru = document.getElementById('tanggal').value
+            var typebaru = document.getElementById('type').value
+            var beratbaru = document.getElementById('berat').value
+
+            pembeli.push(pembelibaru)
+            tanggal.push(tanggalbaru)
+            type.push(typebaru)
+            berat.push(beratbaru)
+
+
+            showData()
+
+        }
+
+        //Menghapus data 
+        function hapus(drop) {
+            var pembelihapus = pembeli.splice(drop, 1);
+            var tanggalhapus = tanggal.splice(drop, 1);
+            var typehapus = type.splice(drop, 1);
+            var berathapus = berat.splice(drop, 1);
+
+
+            showData()
+
+        }
+        var index = []
+
+        function update(i) {
+            document.getElementById('mpembeli').value = pembeli[i]
+            document.getElementById('mtanggal').value = tanggal[i]
+            document.getElementById('mtype').value = type[i]
+            document.getElementById('mberat').value = berat[i]
+
+
+
+            index.push(i)
+        }
+
+        function saveData() {
+            var simpanpembeli = document.getElementById('mpembeli').value
+            var simpantanggal = document.getElementById('mtanggal').value
+            var simpantype = document.getElementById('mtype').value
+            var simpanberat = document.getElementById('mberat').value
+
+
+            pembeli[index] = simpanpembeli
+            tanggal[index] = simpantanggal
+            type[index] = simpantype
+            berat[index] = simpanberat
+
+
+
+            showData()
+            index.pop()
+        }
+
+
+
+
+        //Kedalam tabel Detail Pembelian
+        //Data didalam tabel
+        var pembeli2 = []
+        var tanggal2 = []
+        var type2 = []
+        var berat2 = []
+        var harga2 = []
+        var diskon2 = []
+        var total2 = []
+        var dibayar2 = []
+        var kembalian2 = []
+
+        var tampil2 = document.getElementById('tampildata2')
+
+        //Menampilkan data
+        function showData2() {
+            tampil2.innerHTML = ""
+
+            for (i = 0; i < pembeli2.length; i++) {
+                var nodata2 = i + 1
+
+                tampil2.innerHTML += "<tr>" +
+                    "<th>" + nodata2 + "</th>" +
+                    "<td>" + pembeli2[i] + "</td>" +
+                    "<td>" + tanggal2[i] + "</td>" +
+                    "<td>" + type2[i] + "</td>" +
+                    "<td>" + berat2[i] + "</td>" +
+                    "<td>" + harga2[i] + "</td>" +
+                    "<td>" + diskon2[i] + "</td>" +
+                    "<td>" + total2[i] + "</td>" +
+                    "<td>" + dibayar2[i] + "</td>" +
+                    "<td>" + kembalian2[i] + "</td>" +
+                    "<td>" +
+                    "<button class='btn btn-transparent shadow-sm' href='#' onclick='hapus2(" + i +
+                    ")' type='button'>Delete</button>" +
+                    "</td>" +
+                    "</tr>"
+            }
+        }
+        showData2()
+
+        //Menambahkan data baru
+        function add2() {
+            var pembelibaru2 = document.getElementById('mpembeli2').value
+            var tanggalbaru2 = document.getElementById('mtanggal2').value
+            var typebaru2 = document.getElementById('mtype2').value
+            var beratbaru2 = document.getElementById('mberat2').value
+            var hargabaru2 = document.getElementById('mharga2').value
+            var diskonbaru2 = document.getElementById('mdiskon2').value
+            var totalbaru2 = document.getElementById('mtotal2').value
+            var dibayarbaru2 = document.getElementById('mdibayar2').value
+            var kembalianbaru2 = document.getElementById('mkembalian2').value
+
+            pembeli2.push(pembelibaru2)
+            tanggal2.push(tanggalbaru2)
+            type2.push(typebaru2)
+            berat2.push(beratbaru2)
+            harga2.push(hargabaru2)
+            diskon2.push(diskonbaru2)
+            total2.push(totalbaru2)
+            dibayar2.push(dibayarbaru2)
+            kembalian2.push(kembalianbaru2)
+
+            showData2()
+
+        }
+
+        //Menghapus data 
+        function hapus2(drop) {
+            var pembelihapus2 = pembeli2.splice(drop, 1);
+            var tanggalhapus2 = tanggal2.splice(drop, 1);
+            var typehapus2 = type2.splice(drop, 1);
+            var berathapus2 = berat2.splice(drop, 1);
+            var hargahapus2 = harga2.splice(drop, 1);
+            var diskonhapus2 = diskon2.splice(drop, 1);
+            var totalhapus2 = total2.splice(drop, 1);
+            var dibayarhapus2 = dibayar2.splice(drop, 1);
+            var kembalianhapus2 = kembalian2.splice(drop, 1);
+
+            showData2()
+
+        }
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
